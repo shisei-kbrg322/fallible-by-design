@@ -41,3 +41,8 @@ tests/               モデルの性質（平均エラー率の保存・理論�
 ## ライセンス
 
 MIT
+
+## 解説記事
+
+- [Zenn：技術者向けの詳しい解説]https://zenn.dev/shisei_kbrg322/articles/e4808f04b8e8be
+- [note：数式なしで、組織としての向き合い方をまとめた記事]https://note.com/shisei_kbrg322/n/nd983de113eeb
