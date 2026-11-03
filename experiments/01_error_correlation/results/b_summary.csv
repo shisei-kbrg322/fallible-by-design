@@ -1,0 +1,4 @@
+pair,label,phi_within_day,phi_measured,escape_rate,escape_per_1000,p99_daily_escape
+human_ai,人間 + AI,0.00000,0.00019,0.00249,2.49450,10.00000
+human_human,人間 + 人間,0.10000,0.09962,0.00723,7.22510,14.00000
+ai_ai,AI + AI（同じモデル）,0.80000,0.80544,0.04090,40.89700,122.00000

@@ -1,0 +1,14 @@
+services:
+  # 実験01を実行し、experiments/01_error_correlation/results/ に図とCSVを出力する
+  sim:
+    build: .
+    volumes:
+      - .:/app
+    command: python experiments/01_error_correlation/run.py
+
+  # テスト（平均エラー率が保たれているか、理論値と一致するか）
+  test:
+    build: .
+    volumes:
+      - .:/app
+    command: pytest -q

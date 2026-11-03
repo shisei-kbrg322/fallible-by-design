@@ -1,0 +1,33 @@
+# 実験01：誤りの相関シミュレーション
+# すべて仮定のパラメータ。実データから推定した値ではない。
+
+seed: 20261101
+n_items: 1000      # 1日あたりの判定件数
+n_days: 10000      # シミュレーションする日数
+p: 0.05            # 平均エラー率（人間型・AI型で共通にそろえる）
+
+# 実験A：単独判定。AI型の「誤りのまとまりやすさ」rho を変える（rho=0 が人間型）
+experiment_a:
+  rho_values: [0.0, 0.001, 0.005, 0.01, 0.02, 0.05]
+  highlight_rho: 0.02   # 分布図で人間型と比べる値
+
+# 実験B：二重チェック。2人の誤りの相関 phi を組み合わせごとに置く
+experiment_b:
+  ai_rho: 0.02          # AI型の日ごとのゆらぎ
+  human_pair_phi: 0.1   # 人間同士：同じ研修・同じ思い込みによる弱い相関
+  ai_pair_phi: 0.8      # 同じモデルのAI同士：同じ弱点を共有する強い相関
+  human_ai_phi: 0.0     # 人間とAI：間違える所がずれている
+  sensitivity_human_pair_phi: [0.0, 0.05, 0.1, 0.2]
+
+# 実験C：感度分析。AI単体のエラー率 × AI同士の誤りの相関
+experiment_c:
+  q_min: 0.005
+  q_max: 0.10
+  q_steps: 96
+  phi_steps: 101
+  baseline_human_pair_phi: 0.1   # 比較の基準＝人間2人の二重チェック（p=0.05）
+  markers:                       # 図に印をつける点
+    - {q: 0.05, phi: 0.8, label: "人間と同等のAI×2"}
+    - {q: 0.02, phi: 0.8, label: "人間より優秀なAI×2"}
+  validate_points: 3             # 理論値をシミュレーションで確かめる点の数
+  validate_days: 2000
